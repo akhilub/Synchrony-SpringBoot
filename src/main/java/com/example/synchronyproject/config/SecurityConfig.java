@@ -45,7 +45,7 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/api/users/login", "/api/images/upload", "/api/images/viewImages","/api/images/delete/{imageId}").authenticated()
+                        .requestMatchers("/api/users/login", "/api/images/upload", "/api/images/viewImages").authenticated()
                         .anyRequest().permitAll()
                 )
                 .httpBasic();

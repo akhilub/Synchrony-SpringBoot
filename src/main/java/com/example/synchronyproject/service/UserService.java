@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -33,14 +32,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void addUserImage(Long id, String imageUrl) {
+    public void addUserImage(Long id, String imageUrl, String imageDeleteHash) {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             boolean imageExists = user.getImages().stream()
                     .anyMatch(image -> image.getImageUrl().equals(imageUrl));
             if (!imageExists) {
-                Image image = new Image(imageUrl);
+                Image image = new Image(imageUrl, imageDeleteHash);
                 image.setUser(user);
                 user.addImage(image);
                 userRepository.save(user);
@@ -67,13 +66,19 @@ public class UserService {
     }
 
     public Image findImageById(Long imageId) {
-        return userRepository.findAll().stream()
-                .flatMap(user -> user.getImages().stream())
-                .filter(image -> image.getId().equals(imageId))
-                .findFirst()
-                .orElse(null);
+        Optional<User> optionalUser = userRepository.findAll().stream()
+                .filter(user -> user.getImages().stream()
+                        .anyMatch(image -> image.getId().equals(imageId)))
+                .findFirst();
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            return user.getImages().stream()
+                    .filter(image -> image.getId().equals(imageId))
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
     }
-
     // New method to get all images for a user by user ID
     public List<Image> getUserImages(Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
@@ -83,4 +88,4 @@ public class UserService {
             throw new IllegalArgumentException("User not found with id: " + userId);
         }
     }
-}
+    }
