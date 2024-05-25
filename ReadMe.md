@@ -76,7 +76,7 @@ This command will compile the source code and start the application.
 
 Once the application is running, you should see some logs in the console, and the application will be accessible at http://localhost:8080 (or a different port if specified in the configuration).
 
-Note: If you're using an IDE like IntelliJ IDEA or Eclipse, you can also run the application directly from the IDE by locating the SynchronyProjectApplication class and running the main method.
+**Note:** If you're using an IDE like IntelliJ IDEA or Eclipse, you can also run the application directly from the IDE by locating the SynchronyProjectApplication class and running the main method.
 
 ## Contributing
 
