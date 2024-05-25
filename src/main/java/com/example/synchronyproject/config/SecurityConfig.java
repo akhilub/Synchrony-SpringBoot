@@ -46,8 +46,12 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/api/users/login", "/api/images/upload", "/api/images/viewImages").authenticated()
+                        .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().permitAll()
+
+
                 )
+                .headers(headers -> headers.frameOptions().sameOrigin())
                 .httpBasic();
 
         return http.build();

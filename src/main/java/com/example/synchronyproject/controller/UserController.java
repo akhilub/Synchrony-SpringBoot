@@ -19,6 +19,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
         try {
+            System.out.println(user);
             userService.registerUser(user);
             return ResponseEntity.ok("User registered successfully");
         } catch (Exception e) {
@@ -45,4 +46,6 @@ public class UserController {
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
+
+
 }
