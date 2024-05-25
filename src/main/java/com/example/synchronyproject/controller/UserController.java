@@ -27,7 +27,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/login")
+    @GetMapping("/basicInfo")
     public ResponseEntity<User> getUser(Principal principal) {
         if (principal == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
