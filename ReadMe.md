@@ -7,11 +7,27 @@ The Synchrony Project is a Spring Boot application that manages users and their 
 - Java 8 or higher
 - Maven
 
+## Technologies used
+
+- **Spring Boot (v3.2.2):** A super-powerful framework for creating Java-based applications (just like this one).
+- **Spring Data JPA:** Simplifies the data access layer and interactions with the database.
+- **H2 Database:** An in-memory database used for development and testing purposes.
+
+
 ## Project Structure
 
+This Spring Boot application follows the popular 3-layer structure with such **main layers** as:
+
 - `src/main/java/com/example/synchronyproject`: Contains the main application code.
-    - `SynchronyProjectApplication.java`: The entry point of the application.
-    - `model`: Contains the entity classes for User and Image.
+- `SynchronyProjectApplication.java`: The entry point of the application.
+- repository (for working with database)
+- service (for business logic implementing)
+- controller (for accepting client's requests and getting responses to them)
+
+Also, it has other **important layers** such as:
+
+- config: config (main security config)
+- model: Contains the entity classes for User and Image.
 - `src/test/java/com/example/synchronyproject`: Contains the test cases for the application.
 
 ## Database
@@ -29,7 +45,7 @@ This application uses an in-memory H2 database for development and testing purpo
 - `GET /users/basicInfo`: View the User Basic Information and the Images
 - `GET /users/all`: Retrieve a list of all users.
 
-## Getting Started
+## Setup Instructions
 
 - To run the Spring Boot application, you can follow the below steps and use the following commands:
 
