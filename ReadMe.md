@@ -2,6 +2,8 @@
 
 A Spring Boot application that manages users and their associated images.
 
+![](./images/imageVault.gif)
+
 ## Prerequisites
 
 - Java 8 or higher

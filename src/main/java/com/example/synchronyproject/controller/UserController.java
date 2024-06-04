@@ -19,7 +19,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
         try {
-            System.out.println(user);
+            System.out.println("I am here with user " + user); // Log or print the user
             userService.registerUser(user);
             return ResponseEntity.ok("User registered successfully");
         } catch (Exception e) {
