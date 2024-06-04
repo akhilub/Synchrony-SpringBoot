@@ -1,6 +1,6 @@
-# Synchrony Project
+# ImageVault: A secure and user-friendly image management platform.
 
-The Synchrony Project is a Spring Boot application that manages users and their associated images.
+A Spring Boot application that manages users and their associated images.
 
 ## Prerequisites
 
